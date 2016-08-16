@@ -1,12 +1,15 @@
 package predo.patterns.prototype.step3;
 
+import org.apache.commons.lang.SerializationUtils;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by predo1 on 15/08/16.
  */
-public abstract class CookieWithDots implements Cloneable {
+public abstract class CookieWithDots implements Serializable {
 
     private List<AbstractDot> dots;
 
@@ -27,14 +30,6 @@ public abstract class CookieWithDots implements Cloneable {
     }
 
     public Object clone(){
-        CookieWithDots clone = null;
-
-        try {
-            clone = (CookieWithDots) super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        return clone;
+        return SerializationUtils.clone(this);
     }
 }
